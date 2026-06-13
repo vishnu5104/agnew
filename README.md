@@ -1,6 +1,11 @@
 # 🛡️ AgentShield
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![Tests](https://img.shields.io/badge/Tests-Passing-success.svg)](https://github.com/vishnu5104/agent-shield)
+
 AgentShield is a lightweight, robust security shield SDK for Node.js designed to protect wallets from autonomous AI agents. By wrapping the agent's payment mechanisms, AgentShield ensures that every transaction is validated against real-time safety policies before execution.
+
 
 ## Core Features
 
