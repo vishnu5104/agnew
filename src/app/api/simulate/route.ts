@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 import { shield } from '@/lib/shield';
+import { simulateOnChainTx } from '@/lib/blockchain';
 
 export async function POST(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const mode = searchParams.get('mode');
     const body = await request.json();
     const { amount, merchant } = body;
 
@@ -14,6 +17,12 @@ export async function POST(request: Request) {
     }
 
     const txAmount = Number(amount);
+
+    if (mode === 'blockchain') {
+      const result = await simulateOnChainTx(String(merchant), txAmount);
+      return NextResponse.json(result);
+    }
+
     const decision = await shield.check({
       amount: txAmount,
       merchant: String(merchant),
@@ -28,3 +37,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
+
